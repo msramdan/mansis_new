@@ -1,0 +1,32 @@
+{
+  "name": "almasaeed2010/adminlte",
+  "description": "AdminLTE - admin control panel and dashboard that's based on Bootstrap 3",
+  "homepage": "https://adminlte.io/",
+  "type": "template",
+  "keywords": [
+    "css",
+    "js",
+    "less",
+    "responsive",
+    "back-end",
+    "template",
+    "theme",
+    "web",
+    "admin"
+  ],
+  "authors": [
+    {
+      "name": "Abdullah Almsaeed",
+      "email": "abdullah@almsaeedstudio.com"
+    }
+  ],
+  "license": "MIT",
+  "support": {
+    "issues": "https://github.com/almasaeed2010/AdminLTE/issues"
+  },
+  "require": {
+    "composer/installers": "1.*",
+    "picqer/php-barcode-generator": "^2.0",
+    "endroid/qr-code": "^3.9"
+  }
+}
