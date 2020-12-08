@@ -36,6 +36,18 @@ class Jenisakun_m extends CI_Model
         return $query;
     }
 
+    public function get_pemasukan_tr($id = null)
+    {
+        $this->db->from('jns_akun');
+        $this->db->where('aktif', 'Y');
+        $this->db->where('pemasukan', 'Y');
+        if ($id != null) {
+            $this->db->where('perusahaan_id', $id);
+        }
+        $query = $this->db->get();
+        return $query;
+    }
+
     public function get_pengeluaran($id = null)
     {
         $this->db->from('jns_akun');
@@ -43,6 +55,17 @@ class Jenisakun_m extends CI_Model
         $this->db->where('pengeluaran', 'Y');
         if ($id != null) {
             $this->db->where('id', $id);
+        }
+        $query = $this->db->get();
+        return $query;
+    }
+    public function get_pengeluaran_tr($id = null)
+    {
+        $this->db->from('jns_akun');
+        $this->db->where('aktif', 'Y');
+        $this->db->where('pengeluaran', 'Y');
+        if ($id != null) {
+            $this->db->where('perusahaan_id', $id);
         }
         $query = $this->db->get();
         return $query;

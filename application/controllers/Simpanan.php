@@ -39,11 +39,13 @@ class Simpanan extends CI_Controller
         if ($this->fungsi->user_login()->level == 1) {
             $karyawan = $this->karyawan_m->view_karyawan()->result();
             $jns_simpanan = $this->jenissimpanan_m->view_jenissimpanan()->result();
+            $jns_kas = $this->jeniskas_m->get_setoran_tr()->result();
         } else {
             $karyawan = $this->karyawan_m->view_karyawan($this->fungsi->user_login()->perusahaan_id)->result();
             $jns_simpanan = $this->jenissimpanan_m->view_jenissimpanan($this->fungsi->user_login()->perusahaan_id)->result();
+            $jns_kas = $this->jeniskas_m->get_setoran_tr($this->fungsi->user_login()->perusahaan_id)->result();
         }
-        $jns_kas = $this->jeniskas_m->get_setoran()->result();
+        
         $data = [
             'karyawan' => $karyawan,
             'jns_simpanan' => $jns_simpanan,
@@ -56,15 +58,13 @@ class Simpanan extends CI_Controller
     {
         if ($this->fungsi->user_login()->level == 1) {
             $karyawan = $this->karyawan_m->view_karyawan()->result();
-            // $jns_simpanan = $this->jenissimpanan_m->get()->result();
             $jns_simpanan = $this->jenissimpanan_m->view_jenissimpanan()->result();
+            $jns_kas = $this->jeniskas_m->get_penarikan_tr()->result();
         } else {
             $karyawan = $this->karyawan_m->view_karyawan($this->fungsi->user_login()->perusahaan_id)->result();
-            // $jns_simpanan = $this->jenissimpanan_m->get()->result();
             $jns_simpanan = $this->jenissimpanan_m->view_jenissimpanan($this->fungsi->user_login()->perusahaan_id)->result();
+            $jns_kas = $this->jeniskas_m->get_penarikan_tr($this->fungsi->user_login()->perusahaan_id)->result();
         }
-
-        $jns_kas = $this->jeniskas_m->get_penarikan()->result();
         $data = [
             'karyawan' => $karyawan,
             'jns_simpanan' => $jns_simpanan,

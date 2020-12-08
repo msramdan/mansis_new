@@ -34,6 +34,18 @@ class Jeniskas_m extends CI_Model
         return $query;
     }
 
+    public function get_setoran_tr($perusahaan_id = null)
+    {
+        $this->db->from('jns_kas');
+        $this->db->where('aktif', 'Y');
+        $this->db->where('tmpl_simpan', 'Y');
+        if ($id != null) {
+            $this->db->where('perusahaan_id', $perusahaan_id);
+        }
+        $query = $this->db->get();
+        return $query;
+    }
+
     public function get_penarikan($id = null)
     {
         $this->db->from('jns_kas');
@@ -41,6 +53,17 @@ class Jeniskas_m extends CI_Model
         $this->db->where('tmpl_penarikan', 'Y');
         if ($id != null) {
             $this->db->where('id', $id);
+        }
+        $query = $this->db->get();
+        return $query;
+    }
+    public function get_penarikan_tr($id = null)
+    {
+        $this->db->from('jns_kas');
+        $this->db->where('aktif', 'Y');
+        $this->db->where('tmpl_penarikan', 'Y');
+        if ($id != null) {
+            $this->db->where('perusahaan_id', $id);
         }
         $query = $this->db->get();
         return $query;
@@ -58,6 +81,18 @@ class Jeniskas_m extends CI_Model
         return $query;
     }
 
+    public function get_pemasukan_tr($id = null)
+    {
+        $this->db->from('jns_kas');
+        $this->db->where('aktif', 'Y');
+        $this->db->where('tmpl_pemasukan', 'Y');
+        if ($id != null) {
+            $this->db->where('perusahaan_id', $id);
+        }
+        $query = $this->db->get();
+        return $query;
+    }
+
     public function get_pengeluaran($id = null)
     {
         $this->db->from('jns_kas');
@@ -65,6 +100,17 @@ class Jeniskas_m extends CI_Model
         $this->db->where('tmpl_pengeluaran', 'Y');
         if ($id != null) {
             $this->db->where('id', $id);
+        }
+        $query = $this->db->get();
+        return $query;
+    }
+    public function get_pengeluaran_tr($id = null)
+    {
+        $this->db->from('jns_kas');
+        $this->db->where('aktif', 'Y');
+        $this->db->where('tmpl_pengeluaran', 'Y');
+        if ($id != null) {
+            $this->db->where('perusahaan_id', $id);
         }
         $query = $this->db->get();
         return $query;

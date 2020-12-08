@@ -12,6 +12,7 @@ class Kas extends CI_Controller
         $this->load->model('perusahaan_m');
         $this->load->model('jeniskas_m');
         $this->load->model('jenisakun_m');
+
     }
 
     public function pemasukan()
@@ -46,9 +47,17 @@ class Kas extends CI_Controller
 
     public function pemasukan_add()
     {
+
+        if ($this->fungsi->user_login()->level == 1) {
+            $jns_kas = $this->jeniskas_m->get_pemasukan_tr()->result();
+            $jns_akun = $this->jenisakun_m->get_pemasukan_tr()->result();
+        } else {
+            $jns_kas = $this->jeniskas_m->get_pemasukan_tr($this->fungsi->user_login()->perusahaan_id)->result();
+            $jns_akun = $this->jenisakun_m->get_pemasukan_tr($this->fungsi->user_login()->perusahaan_id)->result();
+        }
+
+
         $perusahaan = $this->perusahaan_m->get()->result();
-        $jns_akun = $this->jenisakun_m->get_pemasukan()->result();
-        $jns_kas = $this->jeniskas_m->get_pemasukan()->result();
         $data = [
             'perusahaan' => $perusahaan,
             'jns_kas' => $jns_kas,
@@ -59,9 +68,14 @@ class Kas extends CI_Controller
 
     public function pengeluaran_add()
     {
+        if ($this->fungsi->user_login()->level == 1) {
+            $jns_kas = $this->jeniskas_m->get_pengeluaran_tr()->result();
+            $jns_akun = $this->jenisakun_m->get_pengeluaran_tr()->result();
+        } else {
+            $jns_kas = $this->jeniskas_m->get_pengeluaran_tr($this->fungsi->user_login()->perusahaan_id)->result();
+            $jns_akun = $this->jenisakun_m->get_pengeluaran_tr($this->fungsi->user_login()->perusahaan_id)->result();
+        }
         $perusahaan = $this->perusahaan_m->get()->result();
-        $jns_akun = $this->jenisakun_m->get_pengeluaran()->result();
-        $jns_kas = $this->jeniskas_m->get_pengeluaran()->result();
         $data = [
             'perusahaan' => $perusahaan,
             'jns_kas' => $jns_kas,
